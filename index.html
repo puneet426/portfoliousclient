@@ -10,17 +10,17 @@
   <meta property="og:description" content="ML @ NASA Ames · MS CS @ Columbia University · Ex-Software Engineer @ BNY">
   <meta property="og:type" content="profile">
   <meta property="og:image" content="assets/nirmayi.jpg">
-  <meta name="theme-color" content="#f5f2ea" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#121418" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ece5d6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#10141d" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 
   <script>
-    // Apply a saved theme before first paint to avoid a flash.
+    document.documentElement.classList.add('js');
     try {
       var t = localStorage.getItem('theme');
       if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
@@ -29,10 +29,11 @@
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"><span></span></div>
 
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="wordmark" href="#top" aria-label="Nirmayi Kelkar, back to top">Nirmayi Kelkar</a>
+      <a class="wordmark" href="#top" aria-label="Nirmayi Kelkar, back to top">N<span>irmayi&nbsp;</span>K<span>elkar</span></a>
       <nav aria-label="Primary">
         <ul class="nav">
           <li><a href="#about">About</a></li>
@@ -42,247 +43,337 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-      <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
-        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-      </button>
+      <button class="text-btn theme-toggle" type="button" aria-label="Switch colour theme"><span class="theme-label">Dark</span></button>
+      <button class="text-btn menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
     </div>
   </header>
 
+  <!-- Mobile menu -->
+  <div class="menu" id="menu" hidden>
+    <ol>
+      <li><a href="#top"><span>00</span>Intro</a></li>
+      <li><a href="#about"><span>01</span>About</a></li>
+      <li><a href="#experience"><span>02</span>Experience</a></li>
+      <li><a href="#education"><span>03</span>Education</a></li>
+      <li><a href="#skills"><span>04</span>Skills</a></li>
+      <li><a href="#contact"><span>05</span>Contact</a></li>
+    </ol>
+  </div>
+
+  <!-- Section index (desktop) -->
+  <nav class="rail" aria-label="Sections">
+    <a href="#top" data-for="top"><i></i><b>Intro</b></a>
+    <a href="#about" data-for="about"><i></i><b>About</b></a>
+    <a href="#experience" data-for="experience"><i></i><b>Experience</b></a>
+    <a href="#education" data-for="education"><i></i><b>Education</b></a>
+    <a href="#skills" data-for="skills"><i></i><b>Skills</b></a>
+    <a href="#contact" data-for="contact"><i></i><b>Contact</b></a>
+  </nav>
+
   <main id="main">
-    <!-- Intro -->
-    <section class="intro wrap" id="top">
-      <div class="intro-text">
-        <p class="kicker">Machine Learning &amp; Software Engineering</p>
-        <h1>Nirmayi Kelkar</h1>
-        <p class="lede">
-          Machine learning intern at <strong>NASA Ames Research Center</strong>, working on
-          lunar operations with agentic AI. Master’s student in Computer Science at
-          <strong>Columbia University</strong>, specializing in machine learning.
-        </p>
-        <p class="intro-links">
-          <a class="btn" href="mailto:nimu.kelkar@gmail.com">Email me</a>
-          <a class="link-arrow" href="https://www.linkedin.com/in/nirmayi" target="_blank" rel="noopener">LinkedIn</a>
-        </p>
-      </div>
-      <figure class="portrait">
-        <picture>
-          <source srcset="assets/nirmayi.webp" type="image/webp">
-          <img src="assets/nirmayi.jpg" width="400" height="400" alt="Portrait of Nirmayi Kelkar">
-        </picture>
-      </figure>
+    <!-- 00 Intro -->
+    <section class="panel intro-panel" id="top">
+      <div class="contours" aria-hidden="true"></div>
+      <div class="wrap intro">
+        <div class="intro-text">
+          <p class="kicker anim" style="--d:.05s">Machine Learning &amp; Software Engineering</p>
+          <h1 aria-label="Nirmayi Kelkar">
+            <span class="line"><span style="--d:.15s">Nirmayi</span></span>
+            <span class="line"><span style="--d:.28s"><em>Kelkar</em></span></span>
+          </h1>
+          <p class="lede anim" style="--d:.5s">
+            Machine learning intern at <strong>NASA Ames Research Center</strong>, working on
+            lunar operations with agentic AI. Master’s student in Computer Science at
+            <strong>Columbia University</strong>, specializing in machine learning.
+          </p>
+          <p class="actions anim" style="--d:.62s">
+            <a class="go" href="mailto:nimu.kelkar@gmail.com"><span>Write to me</span><i aria-hidden="true"></i></a>
+            <a class="go go-quiet" href="https://www.linkedin.com/in/nirmayi" target="_blank" rel="noopener"><span>LinkedIn</span><i aria-hidden="true"></i></a>
+          </p>
+        </div>
 
-      <dl class="facts">
-        <div><dt>Now</dt><dd>NASA Ames Research Center</dd></div>
-        <div><dt>Studying</dt><dd>MS Computer Science, Columbia · 4.0 GPA</dd></div>
-        <div><dt>Previously</dt><dd>NASA Goddard · BNY · Credit Suisse</dd></div>
-        <div><dt>Based in</dt><dd>Greater Seattle Area</dd></div>
-      </dl>
-    </section>
-
-    <!-- About -->
-    <section class="section wrap" id="about" aria-labelledby="about-h">
-      <h2 class="section-title" id="about-h"><span class="num">01</span>About</h2>
-      <div class="section-body prose">
-        <p>
-          I am pursuing a Master’s in Computer Science from Columbia University (4/4 GPA)
-          with a specialization in Machine Learning.
-        </p>
-        <p>
-          Previously, I worked as a Senior Associate Software Developer at the Bank of New York
-          and as a summer Software Cybersecurity intern at NASA Goddard. This fall I am at
-          NASA Ames, working on lunar space exploration with agentic AI.
-        </p>
-        <p class="note">I am a U.S. citizen and do not require work sponsorship.</p>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section class="section wrap" id="experience" aria-labelledby="exp-h">
-      <h2 class="section-title" id="exp-h"><span class="num">02</span>Experience</h2>
-
-      <ol class="roles section-body">
-        <li class="role">
-          <div class="role-when">
-            <time datetime="2026-08">Aug 2026</time> – Present
-            <span class="dur">4 mos</span>
+        <figure class="portrait">
+          <div class="frame">
+            <picture>
+              <source srcset="assets/nirmayi.webp" type="image/webp">
+              <img src="assets/nirmayi.jpg" width="400" height="400" alt="Portrait of Nirmayi Kelkar">
+            </picture>
           </div>
-          <div class="role-main">
-            <h3 class="role-title">Machine Learning Intern <span class="badge">Current</span></h3>
-            <p class="role-org">NASA Ames Research Center <span class="sep">·</span> Full-time</p>
-            <p class="role-loc">Mountain View, California, United States</p>
-            <div class="role-desc">
-              <p>Working in the Lunar Operations Coordination Framework team.</p>
+        </figure>
+
+        <dl class="facts">
+          <div><dt>Now</dt><dd>NASA Ames Research Center</dd></div>
+          <div><dt>Studying</dt><dd>MS Computer Science, Columbia · 4.0 GPA</dd></div>
+          <div><dt>Previously</dt><dd>NASA Goddard · BNY · Credit Suisse</dd></div>
+          <div><dt>Based in</dt><dd>Greater Seattle Area</dd></div>
+        </dl>
+      </div>
+      <a class="scroll-cue" href="#about" aria-label="Scroll to About"><span>Scroll</span><i></i></a>
+    </section>
+
+    <!-- 01 About -->
+    <section class="panel" id="about" aria-labelledby="about-h">
+      <div class="wrap section">
+        <h2 class="section-title" id="about-h"><span class="num">01</span><span class="mask"><span>About</span></span></h2>
+        <div class="section-body">
+          <div class="prose reveal">
+            <p class="drop">
+              I am pursuing a Master’s in Computer Science from Columbia University (4/4 GPA)
+              with a specialization in Machine Learning.
+            </p>
+            <p>
+              Previously, I worked as a Senior Associate Software Developer at the Bank of New York
+              and as a summer Software Cybersecurity intern at NASA Goddard. This fall I am at
+              NASA Ames, working on lunar space exploration with agentic AI.
+            </p>
+            <p class="note">I am a U.S. citizen and do not require work sponsorship.</p>
+          </div>
+
+          <ul class="figures reveal">
+            <li><b><span class="count" data-to="15">15</span>%</b><span>higher cyber-anomaly recall on flight telemetry, NASA Goddard</span></li>
+            <li><b><span class="count" data-to="98">98</span>%</b><span>qualification pass rate in Hardware-in-the-Loop campaigns</span></li>
+            <li><b><span class="count" data-to="35">35</span>%</b><span>less deployment time from new C/C++ cross-compilation pipelines</span></li>
+            <li><b><span class="count" data-to="5">5</span>+</b><span>client-facing websites designed and maintained at BNY</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Experience -->
+    <section class="panel panel-tint" id="experience" aria-labelledby="exp-h">
+      <div class="wrap section">
+        <h2 class="section-title" id="exp-h"><span class="num">02</span><span class="mask"><span>Experience</span></span></h2>
+
+        <div class="section-body timeline">
+          <div class="tl-track" aria-hidden="true"><span class="tl-fill"></span></div>
+          <ol class="roles">
+            <li class="role reveal">
+              <div class="role-when">
+                <time datetime="2026-08">Aug 2026</time> – Present
+                <span class="dur">4 mos</span>
+              </div>
+              <div class="role-main">
+                <h3 class="role-title">Machine Learning Intern <span class="badge">Current</span></h3>
+                <p class="role-org">NASA Ames Research Center <span class="sep">·</span> Full-time</p>
+                <p class="role-loc">Mountain View, California, United States</p>
+                <div class="role-desc">
+                  <p>Working in the Lunar Operations Coordination Framework team.</p>
+                </div>
+              </div>
+            </li>
+
+            <li class="role reveal">
+              <div class="role-when">
+                <time datetime="2026-05">May 2026</time> – <time datetime="2026-08">Aug 2026</time>
+                <span class="dur">4 mos</span>
+              </div>
+              <div class="role-main">
+                <h3 class="role-title">Software Intern</h3>
+                <p class="role-org">NASA Goddard Space Flight Center <span class="sep">·</span> Internship</p>
+                <p class="role-loc">Maryland, United States <span class="sep">·</span> On-site</p>
+                <ul class="role-desc">
+                  <li>Planned, designed, and integrated an AI-based software assurance module for NASA’s core Flight System (cFS). Implemented a real-time Isolation Forest anomaly detector in C for embedded targets, validating system behavior to achieve sub-millisecond inference within strict (&lt;2&nbsp;MB) resource constraints, directly enhancing flight software assurance capabilities for safety-critical embedded operations.</li>
+                  <li>Performed technical analyses on flight and ground data systems, evaluating CCSDS telemetry fields (APID, packet length, inter-arrival time) to assess system resiliency and identify cybersecurity attack indicators; collaborated with Johnson Space Center teams to incorporate operationally-derived cyber attack vectors into threat detection validation, improving cyber-anomaly recall by 15% through statistical feature engineering and split-statistic importance ranking.</li>
+                  <li>Conducted IV&amp;V lifecycle software engineering activities, performing static and dynamic code verification, boundary condition analysis, and test case design; developed software lifecycle work products, including requirement-to-test traceability matrices mapping system-level anomaly detection requirements to 30+ verification cases, ensuring AI-augmented flight software components maintained full coverage, compliance with safety-critical coding standards, and auditable traceability from stakeholder requirements through verification.</li>
+                  <li>Planned and executed Hardware-in-the-Loop (HITL) software simulations and automated test campaigns to verify RTEMS-based system implementation. Engineered C/C++ cross-compilation pipelines and runtime diagnostics, achieving a 98% qualification pass rate and reducing deployment time by 35%.</li>
+                </ul>
+                <p class="role-stack">C · C/C++ · Isolation Forest · cFS · RTEMS · CCSDS · HITL · IV&amp;V</p>
+              </div>
+            </li>
+
+            <li class="role reveal">
+              <div class="role-when">
+                <time datetime="2026-01">Jan 2026</time> – <time datetime="2026-06">Jun 2026</time>
+                <span class="dur">6 mos</span>
+              </div>
+              <div class="role-main">
+                <h3 class="role-title">Research Assistant</h3>
+                <p class="role-org">Columbia University <span class="sep">·</span> Part-time</p>
+                <p class="role-loc">New York City Metropolitan Area <span class="sep">·</span> On-site</p>
+                <div class="role-desc">
+                  <p>Working in the GILM lab under Dr Corey Toler-Franklin on AI for Cancer Detection.</p>
+                  <p>Our lab is developing computational algorithms that use deep learning to model changes in protein structure from multispectral observations of tissue. Once computed, the model can be applied to any tissue observation to detect a variety of protein markers without further spectral analysis. The deep learning model will be quantitatively evaluated on a learning dataset of cancer tumors.</p>
+                </div>
+                <p class="role-stack">Deep learning · Multispectral imaging · Computational pathology</p>
+              </div>
+            </li>
+
+            <li class="role reveal">
+              <div class="role-when">
+                <time datetime="2023-07">Jul 2023</time> – <time datetime="2025-05">May 2025</time>
+                <span class="dur">1 yr 11 mos</span>
+              </div>
+              <div class="role-main">
+                <h3 class="role-title">Software Engineer</h3>
+                <p class="role-org">BNY Mellon</p>
+                <ul class="role-desc">
+                  <li>Migrated enterprise BNY client-facing websites using Adobe Experience Manager.</li>
+                  <li>Created reusable components in AEM using HTL, JavaScript, Java, Apache Sling, Java Servlets, schedulers, and workflows.</li>
+                  <li>Worked on the core Java backend using the collections framework.</li>
+                  <li>Took leadership for delivering the boutique investment management website “Dreyfus.”</li>
+                  <li>Worked closely with product owners, designers, and global stakeholders to design, develop, and maintain more than 5 client-facing websites and deliver tailored solutions.</li>
+                </ul>
+                <p class="role-stack">Java · Adobe Experience Manager · HTL · JavaScript · Apache Sling · Agile</p>
+              </div>
+            </li>
+
+            <li class="role reveal">
+              <div class="role-when">
+                <time datetime="2022-06">Jun 2022</time> – <time datetime="2022-08">Aug 2022</time>
+                <span class="dur">3 mos</span>
+              </div>
+              <div class="role-main">
+                <h3 class="role-title">Technology Intern</h3>
+                <p class="role-org">Credit Suisse</p>
+                <ul class="role-desc">
+                  <li>Implemented an automation service using Java, Sikuli and Selenium technology stack for trade booking.</li>
+                  <li>Developed a generic artifact which can automate the booking, cancelling and modification for a batch of trades.</li>
+                  <li>Reduced 100% manual effort for trade booking and validating the trades for APAC, Europe and Americas regions.</li>
+                  <li>Used Jenkins to integrate the artifact in the intra–Credit Suisse network.</li>
+                </ul>
+                <p class="role-stack">Java · Selenium · Sikuli · Jenkins</p>
+              </div>
+            </li>
+
+            <li class="role reveal">
+              <div class="role-when">
+                <time datetime="2021-09">Sep 2021</time> – <time datetime="2021-12">Dec 2021</time>
+                <span class="dur">4 mos</span>
+              </div>
+              <div class="role-main">
+                <h3 class="role-title">Student Intern</h3>
+                <p class="role-org">Tech Mahindra</p>
+                <div class="role-desc">
+                  <p>Built the recommendation system for similar startup prediction using the Cosine Similarity algorithm.</p>
+                </div>
+                <p class="role-stack">Recommender systems · Cosine similarity</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 Education -->
+    <section class="panel" id="education" aria-labelledby="edu-h">
+      <div class="wrap section">
+        <h2 class="section-title" id="edu-h"><span class="num">03</span><span class="mask"><span>Education</span></span></h2>
+        <div class="section-body">
+          <div class="edu reveal">
+            <div class="role-when">
+              <time datetime="2025-08">Aug 2025</time> – <time datetime="2027-05">May 2027</time>
+            </div>
+            <div>
+              <h3 class="role-title edu-title">Columbia University</h3>
+              <p class="role-org">Master’s degree, Computer Science <span class="sep">·</span> Machine Learning track</p>
+              <p class="gpa"><span class="count" data-to="4" data-decimals="1">4.0</span><span> / 4.0 GPA</span></p>
             </div>
           </div>
-        </li>
 
-        <li class="role">
-          <div class="role-when">
-            <time datetime="2026-05">May 2026</time> – <time datetime="2026-08">Aug 2026</time>
-            <span class="dur">4 mos</span>
-          </div>
-          <div class="role-main">
-            <h3 class="role-title">Software Intern</h3>
-            <p class="role-org">NASA Goddard Space Flight Center <span class="sep">·</span> Internship</p>
-            <p class="role-loc">Maryland, United States <span class="sep">·</span> On-site</p>
-            <ul class="role-desc">
-              <li>Planned, designed, and integrated an AI-based software assurance module for NASA’s core Flight System (cFS). Implemented a real-time Isolation Forest anomaly detector in C for embedded targets, validating system behavior to achieve sub-millisecond inference within strict (&lt;2&nbsp;MB) resource constraints, directly enhancing flight software assurance capabilities for safety-critical embedded operations.</li>
-              <li>Performed technical analyses on flight and ground data systems, evaluating CCSDS telemetry fields (APID, packet length, inter-arrival time) to assess system resiliency and identify cybersecurity attack indicators; collaborated with Johnson Space Center teams to incorporate operationally-derived cyber attack vectors into threat detection validation, improving cyber-anomaly recall by 15% through statistical feature engineering and split-statistic importance ranking.</li>
-              <li>Conducted IV&amp;V lifecycle software engineering activities, performing static and dynamic code verification, boundary condition analysis, and test case design; developed software lifecycle work products, including requirement-to-test traceability matrices mapping system-level anomaly detection requirements to 30+ verification cases, ensuring AI-augmented flight software components maintained full coverage, compliance with safety-critical coding standards, and auditable traceability from stakeholder requirements through verification.</li>
-              <li>Planned and executed Hardware-in-the-Loop (HITL) software simulations and automated test campaigns to verify RTEMS-based system implementation. Engineered C/C++ cross-compilation pipelines and runtime diagnostics, achieving a 98% qualification pass rate and reducing deployment time by 35%.</li>
-            </ul>
-            <p class="role-stack">C · C/C++ · Isolation Forest · cFS · RTEMS · CCSDS · HITL · IV&amp;V</p>
-          </div>
-        </li>
-
-        <li class="role">
-          <div class="role-when">
-            <time datetime="2026-01">Jan 2026</time> – <time datetime="2026-06">Jun 2026</time>
-            <span class="dur">6 mos</span>
-          </div>
-          <div class="role-main">
-            <h3 class="role-title">Research Assistant</h3>
-            <p class="role-org">Columbia University <span class="sep">·</span> Part-time</p>
-            <p class="role-loc">New York City Metropolitan Area <span class="sep">·</span> On-site</p>
-            <div class="role-desc">
-              <p>Working in the GILM lab under Dr Corey Toler-Franklin on AI for Cancer Detection.</p>
-              <p>Our lab is developing computational algorithms that use deep learning to model changes in protein structure from multispectral observations of tissue. Once computed, the model can be applied to any tissue observation to detect a variety of protein markers without further spectral analysis. The deep learning model will be quantitatively evaluated on a learning dataset of cancer tumors.</p>
+          <div class="subgrid reveal">
+            <div>
+              <h3 class="sub-h">Publication</h3>
+              <p class="pub">Analysing the sentiments of Marathi–English code-mixed social media data using machine learning techniques</p>
             </div>
-            <p class="role-stack">Deep learning · Multispectral imaging · Computational pathology</p>
-          </div>
-        </li>
-
-        <li class="role">
-          <div class="role-when">
-            <time datetime="2023-07">Jul 2023</time> – <time datetime="2025-05">May 2025</time>
-            <span class="dur">1 yr 11 mos</span>
-          </div>
-          <div class="role-main">
-            <h3 class="role-title">Software Engineer</h3>
-            <p class="role-org">BNY Mellon</p>
-            <ul class="role-desc">
-              <li>Migrated enterprise BNY client-facing websites using Adobe Experience Manager.</li>
-              <li>Created reusable components in AEM using HTL, JavaScript, Java, Apache Sling, Java Servlets, schedulers, and workflows.</li>
-              <li>Worked on the core Java backend using the collections framework.</li>
-              <li>Took leadership for delivering the boutique investment management website “Dreyfus.”</li>
-              <li>Worked closely with product owners, designers, and global stakeholders to design, develop, and maintain more than 5 client-facing websites and deliver tailored solutions.</li>
-            </ul>
-            <p class="role-stack">Java · Adobe Experience Manager · HTL · JavaScript · Apache Sling · Agile</p>
-          </div>
-        </li>
-
-        <li class="role">
-          <div class="role-when">
-            <time datetime="2022-06">Jun 2022</time> – <time datetime="2022-08">Aug 2022</time>
-            <span class="dur">3 mos</span>
-          </div>
-          <div class="role-main">
-            <h3 class="role-title">Technology Intern</h3>
-            <p class="role-org">Credit Suisse</p>
-            <ul class="role-desc">
-              <li>Implemented an automation service using Java, Sikuli and Selenium technology stack for trade booking.</li>
-              <li>Developed a generic artifact which can automate the booking, cancelling and modification for a batch of trades.</li>
-              <li>Reduced 100% manual effort for trade booking and validating the trades for APAC, Europe and Americas regions.</li>
-              <li>Used Jenkins to integrate the artifact in the intra–Credit Suisse network.</li>
-            </ul>
-            <p class="role-stack">Java · Selenium · Sikuli · Jenkins</p>
-          </div>
-        </li>
-
-        <li class="role">
-          <div class="role-when">
-            <time datetime="2021-09">Sep 2021</time> – <time datetime="2021-12">Dec 2021</time>
-            <span class="dur">4 mos</span>
-          </div>
-          <div class="role-main">
-            <h3 class="role-title">Student Intern</h3>
-            <p class="role-org">Tech Mahindra</p>
-            <div class="role-desc">
-              <p>Built the recommendation system for similar startup prediction using the Cosine Similarity algorithm.</p>
+            <div>
+              <h3 class="sub-h">Certifications</h3>
+              <ul class="plain">
+                <li>Introduction to Machine Learning</li>
+                <li>Python Data Structures</li>
+                <li>Smart Cities</li>
+              </ul>
             </div>
-            <p class="role-stack">Recommender systems · Cosine similarity</p>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <!-- Education -->
-    <section class="section wrap" id="education" aria-labelledby="edu-h">
-      <h2 class="section-title" id="edu-h"><span class="num">03</span>Education</h2>
-      <div class="section-body">
-        <div class="edu">
-          <div class="role-when">
-            <time datetime="2025-08">Aug 2025</time> – <time datetime="2027-05">May 2027</time>
-          </div>
-          <div>
-            <h3 class="role-title">Columbia University</h3>
-            <p class="role-org">Master’s degree, Computer Science <span class="sep">·</span> Machine Learning track</p>
-            <p class="role-loc">GPA 4.0 / 4.0</p>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="subgrid">
-          <div>
-            <h3 class="sub-h">Publication</h3>
-            <p class="pub">Analysing the sentiments of Marathi–English code-mixed social media data using machine learning techniques</p>
+    <!-- 04 Skills -->
+    <section class="panel panel-tint" id="skills" aria-labelledby="skills-h">
+      <div class="wrap section">
+        <h2 class="section-title" id="skills-h"><span class="num">04</span><span class="mask"><span>Skills</span></span></h2>
+        <div class="section-body skills">
+          <div class="reveal">
+            <h3 class="sub-h">Machine learning</h3>
+            <ul class="words">
+              <li>Artificial Intelligence</li><li>Natural Language Processing</li><li>Deep Learning</li><li>Anomaly Detection</li><li>Isolation Forest</li><li>Agentic AI</li><li>Recommender Systems</li><li>Feature Engineering</li>
+            </ul>
           </div>
-          <div>
-            <h3 class="sub-h">Certifications</h3>
-            <ul class="plain">
-              <li>Introduction to Machine Learning</li>
-              <li>Python Data Structures</li>
-              <li>Smart Cities</li>
+          <div class="reveal">
+            <h3 class="sub-h">Flight &amp; embedded software</h3>
+            <ul class="words">
+              <li>core Flight System (cFS)</li><li>RTEMS</li><li>CCSDS telemetry</li><li>Hardware-in-the-Loop</li><li>IV&amp;V</li><li>Cross-compilation</li>
+            </ul>
+          </div>
+          <div class="reveal">
+            <h3 class="sub-h">Software engineering</h3>
+            <ul class="words">
+              <li>Python</li><li>C</li><li>C++</li><li>Java</li><li>JavaScript</li><li>Adobe Experience Manager</li><li>Apache Sling</li><li>Selenium</li><li>Jenkins</li><li>Agile</li><li>SEO</li>
+            </ul>
+          </div>
+          <div class="reveal">
+            <h3 class="sub-h">Languages</h3>
+            <ul class="words">
+              <li>English <em>native</em></li><li>Marathi <em>professional</em></li><li>Hindi <em>working</em></li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Skills -->
-    <section class="section wrap" id="skills" aria-labelledby="skills-h">
-      <h2 class="section-title" id="skills-h"><span class="num">04</span>Skills</h2>
-      <div class="section-body skills">
-        <div>
-          <h3 class="sub-h">Machine learning</h3>
-          <p>Artificial Intelligence, Natural Language Processing, Deep Learning, Anomaly Detection (Isolation Forest), Agentic AI, Recommender Systems, Feature Engineering</p>
-        </div>
-        <div>
-          <h3 class="sub-h">Flight &amp; embedded software</h3>
-          <p>NASA core Flight System (cFS), RTEMS, CCSDS telemetry, Hardware-in-the-Loop testing, IV&amp;V, cross-compilation pipelines</p>
-        </div>
-        <div>
-          <h3 class="sub-h">Software engineering</h3>
-          <p>Python, C, C++, Java, JavaScript, Adobe Experience Manager, Apache Sling, Selenium, Jenkins, Agile, Search Engine Optimization</p>
-        </div>
-        <div>
-          <h3 class="sub-h">Languages</h3>
-          <p>English (native or bilingual), Marathi (full professional), Hindi (limited working)</p>
+    <!-- 05 Contact + footer -->
+    <section class="panel panel-dark" id="contact" aria-labelledby="contact-h">
+      <div class="contours" aria-hidden="true"></div>
+      <div class="wrap section contact">
+        <h2 class="section-title" id="contact-h"><span class="num">05</span><span class="mask"><span>Contact</span></span></h2>
+        <div class="section-body">
+          <p class="contact-line reveal">The quickest way to reach me is by email.</p>
+          <p class="contact-big reveal"><a href="mailto:nimu.kelkar@gmail.com">nimu.kelkar<wbr>@gmail.com</a></p>
+          <p class="actions reveal">
+            <a class="go" href="https://www.linkedin.com/in/nirmayi" target="_blank" rel="noopener"><span>linkedin.com/in/nirmayi</span><i aria-hidden="true"></i></a>
+            <button class="go go-quiet copy" type="button" data-copy="nimu.kelkar@gmail.com"><span>Copy email</span><i aria-hidden="true"></i></button>
+          </p>
         </div>
       </div>
-    </section>
 
-    <!-- Contact -->
-    <section class="section wrap contact" id="contact" aria-labelledby="contact-h">
-      <h2 class="section-title" id="contact-h"><span class="num">05</span>Contact</h2>
-      <div class="section-body">
-        <p class="contact-line">
-          The quickest way to reach me is by email.
-        </p>
-        <p class="contact-big"><a href="mailto:nimu.kelkar@gmail.com">nimu.kelkar@gmail.com</a></p>
-        <p class="intro-links">
-          <a class="link-arrow" href="https://www.linkedin.com/in/nirmayi" target="_blank" rel="noopener">linkedin.com/in/nirmayi</a>
-        </p>
-      </div>
+      <footer class="site-footer">
+        <div class="wrap">
+          <p class="footer-name" aria-hidden="true">Nirmayi&nbsp;<em>Kelkar</em></p>
+          <div class="footer-grid">
+            <div>
+              <h3 class="sub-h">Index</h3>
+              <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="sub-h">Elsewhere</h3>
+              <ul>
+                <li><a href="mailto:nimu.kelkar@gmail.com">Email</a></li>
+                <li><a href="https://www.linkedin.com/in/nirmayi" target="_blank" rel="noopener">LinkedIn</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="sub-h">Currently</h3>
+              <ul>
+                <li>NASA Ames, Mountain View</li>
+                <li>Columbia University, MS CS ’27</li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-base">
+            <span>© <span id="year">2026</span> Nirmayi Kelkar</span>
+            <a href="#top" class="to-top">Back to top <i aria-hidden="true">↑</i></a>
+          </div>
+        </div>
+      </footer>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="wrap footer-inner">
-      <span>© <span id="year">2026</span> Nirmayi Kelkar</span>
-      <a href="#top">Back to top ↑</a>
-    </div>
-  </footer>
-
+  <div class="toast" role="status" aria-live="polite"></div>
   <script src="main.js" defer></script>
 </body>
 </html>

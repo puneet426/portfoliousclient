@@ -4,7 +4,8 @@ A static, single-page portfolio. No build step and no dependencies: plain HTML, 
 
 - `index.html`: all of the content (intro, about, experience, education, skills, contact)
 - `styles.css`: design tokens at the top (colours, fonts), plus light and dark themes and print styles
-- `main.js`: theme toggle, highlighting the nav link for the current section, and subtle reveal effects
+- `main.js`: intro and reveal animations, scroll progress, timeline fill, count-up figures, section index, mobile menu, theme toggle and copy-email
+- `assets/contours.svg`: the lunar contour-line texture (coloured through CSS masks)
 - `assets/`: the portrait photo
 
 Fonts: Newsreader (headings), IBM Plex Sans (text) and IBM Plex Mono (dates and labels), loaded from Google Fonts.
